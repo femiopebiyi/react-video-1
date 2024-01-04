@@ -1,6 +1,7 @@
 
 import './App.css';
 import {Users } from "./User"
+import { planets } from './planets';
 
 // function App() {
 //   const age = 17
@@ -26,17 +27,28 @@ import {Users } from "./User"
 //     </div>
 //   );
 // }
+// function App() {
+// let peopleArray = [
+//   { name: "John", age: 25 },
+//   { name: "Emily", age: 30 },
+//   { name: "Michael", age: 22 }
+// ];
+
+//   return (
+//     <div className="App">
+//       {peopleArray.map((user, key)=>{
+//       return <Users name={user.name} age={user.age}/>
+//       })}
+//     </div>
+//   );
+// }
 function App() {
-let peopleArray = [
-  { name: "John", age: 25 },
-  { name: "Emily", age: 30 },
-  { name: "Michael", age: 22 }
-];
+
 
   return (
     <div className="App">
-      {peopleArray.map((user, key)=>{
-      return <Users name={user.name} age={user.age}/>
+      {planets.map((planet)=>{
+        return planet.isGasPlanet &&  <h1>{planet.name}</h1>
       })}
     </div>
   );
@@ -70,4 +82,10 @@ const Job = (props)=>{
     <h1>{props.position}</h1>
     <h1>{props.company}</h1>
   </div>
+}
+
+const Planet = (props)=>{
+  return <div>
+      
+    </div>
 }
