@@ -1,7 +1,8 @@
 
 import './App.css';
-import {Users } from "./User"
-import { planets } from './planets';
+import { useState } from 'react';
+// import {Users } from "./User"
+// import { planets } from './planets';
 
 // function App() {
 //   const age = 17
@@ -42,17 +43,57 @@ import { planets } from './planets';
 //     </div>
 //   );
 // }
-function App() {
+// function App() {
 
 
-  return (
-    <div className="App">
-      {planets.map((planet)=>{
-        return planet.isGasPlanet &&  <h1>{planet.name}</h1>
-      })}
-    </div>
-  );
-}
+//   return (
+//     <div className="App">
+//       {planets.map((planet)=>{
+//         return planet.isGasPlanet &&  <h1>{planet.name}</h1>
+//       })}
+//     </div>
+//   );
+// }
+
+
+  // function App() {
+  //   let [age, setAge] = useState(0)
+  //   const increaseAge = ()=>{
+  //     setAge(age+=1)
+  //   }
+  //   return (
+  //     <div className="App">
+  //       {age} <button onClick={increaseAge}>Increase Age</button>
+  //     </div>
+  //   );
+  // }
+  // function App() {
+  //   let [inputValue, setInputValue] = useState("")
+
+  //   const handleInputChange = (event)=>{
+  //     setInputValue(event.target.value)
+  //   }
+    
+  //   return (
+  //     <div className="App">
+  //       <input type='text' onChange={handleInputChange}/>
+  //       <p>{inputValue}</p>
+  //     </div>
+  //   );
+  // }
+
+  function App() {
+    let [textColor, showTextColor] = useState("black")
+  
+    return (
+      <div className="App">
+        <button onClick={()=>{
+          showTextColor(textColor === "black" ? "red" : "black")
+        }}>Show/Hide</button>
+        <h1 style={{color: textColor}}>Hi my name is femi</h1>
+      </div>
+    );
+  }
 
 
 
@@ -67,25 +108,25 @@ export default App;
 //   return <h2>Pedro</h2>
 // }
 
-const User = (props)=>{
-  return <div>
-    <h1>{props.name}</h1>
-    <h1>{props.age}</h1>
-    <h1>{props.email}</h1>
-  </div>
-}
+// const User = (props)=>{
+//   return <div>
+//     <h1>{props.name}</h1>
+//     <h1>{props.age}</h1>
+//     <h1>{props.email}</h1>
+//   </div>
+// }
 
 
-const Job = (props)=>{
-  return <div>
-    <h1>{props.salary}</h1>
-    <h1>{props.position}</h1>
-    <h1>{props.company}</h1>
-  </div>
-}
+// const Job = (props)=>{
+//   return <div>
+//     <h1>{props.salary}</h1>
+//     <h1>{props.position}</h1>
+//     <h1>{props.company}</h1>
+//   </div>
+// }
 
-const Planet = (props)=>{
-  return <div>
+// const Planet = (props)=>{
+//   return <div>
       
-    </div>
-}
+//     </div>
+// }
