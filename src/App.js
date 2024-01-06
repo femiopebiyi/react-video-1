@@ -82,15 +82,40 @@ import { useState } from 'react';
   //   );
   // }
 
-  function App() {
-    let [textColor, showTextColor] = useState("black")
+  // function App() {
+  //   let [textColor, showTextColor] = useState("black")
   
+  //   return (
+  //     <div className="App">
+  //       <button onClick={()=>{
+  //         showTextColor(textColor === "black" ? "red" : "black")
+  //       }}>Show/Hide</button>
+  //       <h1 style={{color: textColor}}>Hi my name is femi</h1>
+  //     </div>
+  //   );
+  // }
+
+  function App() {
+    const  [count, setCount] = useState(0)
+
+    function increase(){
+      setCount(count+1)
+    }
+  
+ function decrease(){
+    setCount(count-1)
+ }
+
+ function setToZero (){
+  setCount(0)
+ }
+
     return (
       <div className="App">
-        <button onClick={()=>{
-          showTextColor(textColor === "black" ? "red" : "black")
-        }}>Show/Hide</button>
-        <h1 style={{color: textColor}}>Hi my name is femi</h1>
+        <button onClick={increase}>Increase</button>
+        <button onClick={decrease}>decrease</button>
+        <button onClick={setToZero}>set to 0</button>
+        <h1>{count}</h1>
       </div>
     );
   }
