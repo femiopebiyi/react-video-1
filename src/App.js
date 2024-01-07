@@ -95,27 +95,71 @@ import { useState } from 'react';
   //   );
   // }
 
-  function App() {
-    const  [count, setCount] = useState(0)
+//   function App() {
+//     const  [count, setCount] = useState(0)
 
-    function increase(){
-      setCount(count+1)
-    }
+//     function increase(){
+//       setCount(count+1)
+//     }
   
- function decrease(){
-    setCount(count-1)
- }
+//  function decrease(){
+//     setCount(count-1)
+//  }
 
- function setToZero (){
-  setCount(0)
- }
+//  function setToZero (){
+//   setCount(0)
+//  }
+
+//     return (
+//       <div className="App">
+//         <button onClick={increase}>Increase</button>
+//         <button onClick={decrease}>decrease</button>
+//         <button onClick={setToZero}>set to 0</button>
+//         <h1>{count}</h1>
+//       </div>
+//     );
+//   }
+
+  function App() {
+    const [todoList, setTodoList] = useState([])
+    const [newTask, setNewTask] = useState("")
+
+    function handleChange(input){
+      setNewTask(input.target.value)
+    }
+
+    function addTask(){
+      const task = {
+        id: todoList.length === 0 ? 1 : todoList[todoList.length-1].id +1,
+        taskName: newTask
+      }
+      const newTodoList = [...todoList, task]
+      setTodoList(newTodoList)
+    }
+
+    function deleteTask(id){
+      const newTodoList = todoList.filter((task)=>{
+        return task.id !== id
+      })
+
+      setTodoList(newTodoList)
+    }
 
     return (
       <div className="App">
-        <button onClick={increase}>Increase</button>
-        <button onClick={decrease}>decrease</button>
-        <button onClick={setToZero}>set to 0</button>
-        <h1>{count}</h1>
+        <div className='addTask'>
+          <input onChange={handleChange}/>
+          <button onClick={addTask}>Add Task</button>
+        </div>
+        <div className='list'>
+          {todoList.map((item)=>{
+            return <div>
+              <h2>{item.taskName} {item.id}</h2>
+              <button onClick={()=>deleteTask(item.id)}>X</button>
+            </div>
+            
+          })}
+        </div>
       </div>
     );
   }
