@@ -1,6 +1,7 @@
 
 import './App.css';
 import { useState } from 'react';
+import { Task } from './Task';
 // import {Users } from "./User"
 // import { planets } from './planets';
 
@@ -153,11 +154,7 @@ import { useState } from 'react';
         </div>
         <div className='list'>
           {todoList.map((item)=>{
-            return <div>
-              <h2>{item.taskName} {item.id}</h2>
-              <button onClick={()=>deleteTask(item.id)}>X</button>
-            </div>
-            
+            return <Task taskName = {item.taskName} id= {item.id} deleteTask={deleteTask}/>
           })}
         </div>
       </div>
