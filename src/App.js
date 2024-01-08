@@ -132,7 +132,8 @@ import { Task } from './Task';
     function addTask(){
       const task = {
         id: todoList.length === 0 ? 1 : todoList[todoList.length-1].id +1,
-        taskName: newTask
+        taskName: newTask,
+        completed: false
       }
       const newTodoList = [...todoList, task]
       setTodoList(newTodoList)
@@ -146,6 +147,18 @@ import { Task } from './Task';
       setTodoList(newTodoList)
     }
 
+    const completeTask = (id)=>{
+      setTodoList(
+        todoList.map((task)=>{
+          if(task.id === id){
+            return{...task, completed:true}
+          } else{
+            return task
+          }
+        })
+      )
+    }
+
     return (
       <div className="App">
         <div className='addTask'>
@@ -154,7 +167,7 @@ import { Task } from './Task';
         </div>
         <div className='list'>
           {todoList.map((item)=>{
-            return <Task taskName = {item.taskName} id= {item.id} deleteTask={deleteTask}/>
+            return <Task taskName = {item.taskName} id= {item.id} deleteTask={deleteTask} completeTask={completeTask} completed={item.completed}/>
           })}
         </div>
       </div>
