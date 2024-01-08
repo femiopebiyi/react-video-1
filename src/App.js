@@ -1,7 +1,8 @@
 
 import './App.css';
-import { useState } from 'react';
-import { Task } from './Task';
+import { useState, useEffect } from 'react';
+// import { Task } from './Task';
+import { Text } from './Text';
 // import {Users } from "./User"
 // import { planets } from './planets';
 
@@ -121,61 +122,76 @@ import { Task } from './Task';
 //     );
 //   }
 
-  function App() {
-    const [todoList, setTodoList] = useState([])
-    const [newTask, setNewTask] = useState("")
+  // function App() {
+  //   const [todoList, setTodoList] = useState([])
+  //   const [newTask, setNewTask] = useState("")
 
-    function handleChange(input){
-      setNewTask(input.target.value)
-    }
+  //   function handleChange(input){
+  //     setNewTask(input.target.value)
+  //   }
 
-    function addTask(){
-      const task = {
-        id: todoList.length === 0 ? 1 : todoList[todoList.length-1].id +1,
-        taskName: newTask,
-        completed: false
-      }
-      const newTodoList = [...todoList, task]
-      setTodoList(newTodoList)
-    }
+  //   function addTask(){
+  //     const task = {
+  //       id: todoList.length === 0 ? 1 : todoList[todoList.length-1].id +1,
+  //       taskName: newTask,
+  //       completed: false
+  //     }
+  //     const newTodoList = [...todoList, task]
+  //     setTodoList(newTodoList)
+  //   }
 
-    function deleteTask(id){
-      const newTodoList = todoList.filter((task)=>{
-        return task.id !== id
-      })
+  //   function deleteTask(id){
+  //     const newTodoList = todoList.filter((task)=>{
+  //       return task.id !== id
+  //     })
 
-      setTodoList(newTodoList)
-    }
+  //     setTodoList(newTodoList)
+  //   }
 
-    const completeTask = (id)=>{
-      setTodoList(
-        todoList.map((task)=>{
-          if(task.id === id){
-            return{...task, completed:true}
-          } else{
-            return task
-          }
-        })
-      )
+  //   const completeTask = (id)=>{
+  //     setTodoList(
+  //       todoList.map((task)=>{
+  //         if(task.id === id){
+  //           return{...task, completed:true}
+  //         } else{
+  //           return task
+  //         }
+  //       })
+  //     )
 
       
-    }
+  //   }
 
-    return (
-      <div className="App">
-        <div className='addTask'>
-          <input onChange={handleChange}/>
-          <button onClick={addTask}>Add Task</button>
-        </div>
-        <div className='list'>
-          {todoList.map((item)=>{
-            return <Task taskName = {item.taskName} id= {item.id} deleteTask={deleteTask} completeTask={completeTask} completed={item.completed}/>
-          })}
-        </div>
-      </div>
-    );
+  //   return (
+  //     <div className="App">
+  //       <div className='addTask'>
+  //         <input onChange={handleChange}/>
+  //         <button onClick={addTask}>Add Task</button>
+  //       </div>
+  //       <div className='list'>
+  //         {todoList.map((item)=>{
+  //           return <Task taskName = {item.taskName} id= {item.id} deleteTask={deleteTask} completeTask={completeTask} completed={item.completed}/>
+  //         })}
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  function App(){
+    const [showText, setShowText] = useState(false)
+
+    return <div className='App'>
+      <button
+      onClick={()=>{
+        setShowText(!showText)
+      }}
+      >
+        Show Text
+      </button>
+
+      {showText && <Text/>}
+    </div>
   }
-
 
 
 export default App;
