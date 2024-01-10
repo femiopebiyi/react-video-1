@@ -219,20 +219,47 @@ import { Text } from './Text';
 
 
 
+  // function App(){
+  //   const [name, setName] = useState("")
+  // const [predictedAge, setPredictedAge] = useState(null)
+  //   const fetchData = ()=>{
+  //     Axios.get(`https://api.agify.io/?name=${name}`)
+  //       .then((res)=>{
+  //         setPredictedAge(res.data)
+  //       })
+  //   }
+
+  //   return <div className='App'>
+  //     <input placeholder= "Ex. Pedro" onChange ={(event)=>{setName(event.target.value)}}/>
+  //     <button onClick={fetchData}>Predict Age</button>
+  //     <p>name: {predictedAge?.name}, Predicted Age: {predictedAge?.age} </p>
+  //   </div>
+  // }
+
   function App(){
-    const [name, setName] = useState("")
-  const [predictedAge, setPredictedAge] = useState(null)
-    const fetchData = ()=>{
-      Axios.get(`https://api.agify.io/?name=${name}`)
-        .then((res)=>{
-          setPredictedAge(res.data)
-        })
+
+    const [excuse, setExcuse] = useState(null)
+    async function getExcuse (type){
+      try{
+        const response = await fetch(`https://excuser-three.vercel.app/v1/excuse/${type}`);
+        const data = await response.json()
+        setExcuse(data[0])
+        // console.log(data[0].excuse)
+      }
+      
+      catch (err){
+      console.log(err)
     }
+    } 
+    
+    
 
     return <div className='App'>
-      <input placeholder= "Ex. Pedro" onChange ={(event)=>{setName(event.target.value)}}/>
-      <button onClick={fetchData}>Predict Age</button>
-      <p>name: {predictedAge?.name}, Predicted Age: {predictedAge?.age} </p>
+      <button onClick={()=>{getExcuse("party")}}>Party</button>
+      <button onClick={()=>{getExcuse("family")}}>Family</button>
+      <button onClick={()=>{getExcuse("office")}}>Office</button>
+
+      <p>{excuse?.excuse}</p>
     </div>
   }
 
