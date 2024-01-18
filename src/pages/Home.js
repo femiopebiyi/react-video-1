@@ -15,7 +15,7 @@ export const Home = ()=>{
     // }
     const {data: catData, isLoading, isError, refetch} = useQuery({queryKey: ['cat'], queryFn: ()=>{
          return Axios.get("https://catfact.ninja/fact").then((res)=>{
-            return res.data.fact
+            return res.data
          })
     }})
 
@@ -29,7 +29,7 @@ if(isLoading){
     return <h1>Loading fact</h1>
 }
 
-    return <h1>This is the home page <p>{catData}</p> 
+    return <h1>This is the home page <p>{catData?.fact}</p> 
     
     <button onClick={refetch}>Refetch data</button>
     </h1>

@@ -16,6 +16,7 @@ function App() {
   const client = new QueryClient({defaultOptions: {
     queries: {
       refetchOnWindowFocus: false
+      
     }
   }})
     
