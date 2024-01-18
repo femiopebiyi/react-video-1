@@ -8,11 +8,7 @@ import Axios from "axios";
 
 
 export const Home = ()=>{
-    // const fetch = async ()=>{
-    //     console.log(Axios.get("https://catfact.ninja/fact").then((res)=> res.data)
-    //     )
-        
-    // }
+
     const {data: catData, isLoading, isError, refetch} = useQuery({queryKey: ['cat'], queryFn: ()=>{
          return Axios.get("https://catfact.ninja/fact").then((res)=>{
             return res.data
