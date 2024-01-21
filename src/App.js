@@ -9,22 +9,20 @@ import { Navbar } from './pages/Navbar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Form } from './components/Form';
 import { useToggle } from './useToggle';
+import { Cat } from './components/Cat';
 
 
 
 
 function App() {
-  const [isVisible, toggle] = useToggle()
+
+  const client =  new QueryClient()
   return (
     
     <div className="App">
-      <button onClick={toggle}>
-
-        {isVisible ? "Hide" : "Show"}
-
-      </button>
-
-      {isVisible && <h1>Hidden Text</h1>}
+      <QueryClientProvider client={client}>
+        <Cat/>
+      </QueryClientProvider>
     </div>
   );
 }
