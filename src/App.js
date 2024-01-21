@@ -11,6 +11,7 @@ import { Form } from './components/Form';
 import { useToggle } from './useToggle';
 import { Cat } from './components/Cat';
 import { Counter } from './components/Counter';
+import { Person } from './components/Person';
 
 
 
@@ -18,7 +19,15 @@ import { Counter } from './components/Counter';
 function App() {
 
  
-  return <div className='App'> <Counter/> </div>
+  return <div className='App'> 
+    <Person
+    name = "Pedro"
+    email = "femi@femi.com"
+    age = {21}
+    isMarried = {false}
+    friends = {["jessica", 'francis', 'paul']}
+    />
+   </div>
   
 }
 
