@@ -55,3 +55,10 @@ form{
   justify-content: center;
   align-items: center;
 }
+
+
+.App{
+  border: 1px solid red;
+  width: 90%;
+  margin: 1em auto;
+}
